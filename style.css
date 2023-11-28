@@ -116,18 +116,54 @@ body {
 }
 
 /*Home page */
-#hero {
-    background-image: url("image/hero4.png");
-    height: 50vh;
+
+.slider-container {
     width: 100%;
-    background-size: cover;
-    background-position: top 25% right 0;
-    padding: 0 80px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    height: 600px; /* Set a fixed height for the slider container */
+    margin-top: 20px;
+}
+
+.slider {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-} 
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    height:;
+}
+
+img {
+    width: 100%;
+    max-height: 100%; /* Set a maximum height for the images */
+    height: none;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
 #hero h4 {
     padding-bottom: 15px;
 }
@@ -470,7 +506,7 @@ footer .copyright {
 
 /* Shop Page */
 #page-header{
-    background-image: url("image/Banner/b1.jpg");
+    background-image: url("image/Products/banner_mens.png");
     width: 100%;
     height: 40vh;
     background-size: cover;
@@ -480,7 +516,9 @@ footer .copyright {
     flex-direction: column;
     padding: 14px;
 }
-
+.two{
+    background-image: url("image/Products/banner_women.png");
+}
 #page-header h2,
 #page-header h3  {
     color: #fff;
@@ -853,7 +891,43 @@ thead th, tbody td {
     cursor: pointer;
 }
 
+.cart-table img {
+    max-width: 100px; /* Set the maximum width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
 
+.sc-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sc-container img{
+    width: 200px;
+    margin: 2rem 0;
+}
+.sc-container h1{
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.sc-container{
+    max-width: 600px;
+    font-size: 0.97rem;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.sc-btn{
+    padding: 12px 20px;
+    border-radius: 2rem;
+    background: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
 /*start with media query */
 @media (max-width:799px) {
     #navbar {

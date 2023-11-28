@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commerce Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
     <section id="header">
         <a href="#"><img src="logo.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a href="Project.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a class="active" href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
@@ -21,7 +26,7 @@
             </ul>
         </div>
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i ></a>
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
@@ -34,7 +39,7 @@
                 <div class="small-img-col">
                     <img src="image/Products/f1.jpg" width="100%" class="small-img" alt="">
                 </div>
-               <div class="small-img-col">
+                <div class="small-img-col">
                     <img src="image/Products/f2.jpg" width="100%" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
@@ -47,9 +52,9 @@
         </div>
 
         <div class="single-pro-details">
-            <h6>Home / T Shirt</h6>
-            <h4>Men's Fashion T Shirt</h4>
-            <h2>$25</h2>
+            <h6 id="category">Home / T Shirt</h6>
+            <h4 id="productName">Men's Fashion T Shirt</h4>
+            <h2 id="productPrice">$25</h2>
             <select>
                 <option>Select Size</option>
                 <option>XXL</option>
@@ -58,14 +63,16 @@
                 <option>M</option>
                 <option>S</option>
             </select>
-            <input type="number" value="1">
+            <input type="number" id="quantityInput" value="1">
             <button id="addToCart" class="normal">Add To Cart</button>
             <h4>Product Details</h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia consequatur veniam voluptas dolorum exercitationem aperiam consequuntur odit, nesciunt quo, laudantium sed voluptatum maxime, doloribus autem obcaecati ipsa animi numquam aliquam?</span>
+            <span id="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia consequatur
+                veniam voluptas dolorum exercitationem aperiam consequuntur odit, nesciunt quo, laudantium sed
+                voluptatum maxime, doloribus autem obcaecati ipsa animi numquam aliquam?</span>
         </div>
     </section>
 
-    <section id="product1" class="section-p1"> 
+    <section id="product1" class="section-p1">
         <h2>Featured Products</h2>
         <p>Summer Collection New Modern Design</p>
         <div class="pro-container">
@@ -133,8 +140,8 @@
                 </div>
                 <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
             </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-            </div>        
+            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+        </div>
     </section>
 
 
@@ -201,60 +208,163 @@
     </footer>
 
     <script>
-        var MainImg=document.getElementById("MainImg");
-        var smallimg=document.getElementsByClassName("small-img");
+        /*  var MainImg=document.getElementById("MainImg");
+          var smallimg=document.getElementsByClassName("small-img");
+  
+          smallimg[0].onclick = function(){
+              MainImg.src = smallimg[0].src;
+          }
+          smallimg[1].onclick = function(){
+              MainImg.src = smallimg[1].src;
+          }
+          smallimg[2].onclick = function(){
+              MainImg.src = smallimg[2].src;
+          }
+          smallimg[3].onclick = function(){
+              MainImg.src = smallimg[3].src;
+          }
+  
+              document.getElementById("addToCart").onclick = function() {
+                  // Retrieve product details
+                  var productName = "Men's Fashion T Shirt";
+                  var productPrice = 25;
+                  var selectedSize = document.querySelector("select").value;
+                  var quantity = parseInt(document.querySelector("input[type=number]").value);
+          
+                  // Create an object to represent the product
+                  var product = {
+                      name: productName,
+                      price: productPrice,
+                      size: selectedSize,
+                      quantity: quantity
+                  };
+          
+                  // Check if localStorage is supported
+                  if (typeof(Storage) !== "undefined") {
+                      // Retrieve the existing cart or create a new one
+                      var cart = JSON.parse(localStorage.getItem("cart")) || [];
+          
+                      // Add the product to the cart
+                      cart.push(product);
+          
+                      // Save the updated cart back to localStorage
+                      localStorage.setItem("cart", JSON.stringify(cart));
+          
+                      // Provide feedback to the user (you can customize this part)
+                      alert("Product added to cart!");
+                  } else {
+                      alert("Sorry, your browser does not support storage. Unable to add to cart.");
+                  }
+              }
+          
+          
+     */
 
-        smallimg[0].onclick = function(){
+        var products = [
+            { name: "Product 1", price: 25, image: "image/Products/f1.jpg", description: "Description for Product 1" },
+            { name: "Product 2", price: 20, image: "image/Products/f2.jpg", description: "Description for Product 2" },
+            // Add more products as needed
+        ];
+
+        // Function to dynamically create product elements
+        function createProductElement(product) {
+            var productElement = document.createElement("div");
+            productElement.classList.add("pro");
+            productElement.innerHTML = `
+       <img src="${product.image}" alt="">
+       <div class="des">
+           <span>adidas</span>
+           <h5>${product.name}</h5>
+           <div class="star">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+           </div>
+           <h4>$${product.price}</h4>
+       </div>
+       <a href="#" onclick="showProductDetails(${JSON.stringify(product)})"><i class="fa-solid fa-cart-shopping cart"></i></a>
+   `;
+            return productElement;
+        }
+
+        // Function to show product details on the single product page
+        function showProductDetails(product) {
+            // Redirect to the single product page or display details in a modal
+            window.location.href = 'singleproduct.html';
+            // Optionally, you can store the selected product in localStorage and retrieve it on the single product page
+            localStorage.setItem("selectedProduct", JSON.stringify(product));
+        }
+
+        // Display products on the shop page
+        var proContainer = document.querySelector(".pro-container");
+        products.forEach(function (product) {
+            proContainer.appendChild(createProductElement(product));
+        });
+
+
+
+
+        var MainImg = document.getElementById("MainImg");
+        var smallimg = document.getElementsByClassName("small-img");
+
+        smallimg[0].onclick = function () {
             MainImg.src = smallimg[0].src;
         }
-        smallimg[1].onclick = function(){
+        smallimg[1].onclick = function () {
             MainImg.src = smallimg[1].src;
         }
-        smallimg[2].onclick = function(){
+        smallimg[2].onclick = function () {
             MainImg.src = smallimg[2].src;
         }
-        smallimg[3].onclick = function(){
+        smallimg[3].onclick = function () {
             MainImg.src = smallimg[3].src;
         }
 
-            document.getElementById("addToCart").onclick = function() {
-                // Retrieve product details
-                var productName = "Men's Fashion T Shirt";
-                var productPrice = 25;
-                var selectedSize = document.querySelector("select").value;
-                var quantity = parseInt(document.querySelector("input[type=number]").value);
-        
-                // Create an object to represent the product
-                var product = {
-                    name: productName,
-                    price: productPrice,
-                    size: selectedSize,
-                    quantity: quantity
-                };
-        
-                // Check if localStorage is supported
-                if (typeof(Storage) !== "undefined") {
-                    // Retrieve the existing cart or create a new one
-                    var cart = JSON.parse(localStorage.getItem("cart")) || [];
-        
-                    // Add the product to the cart
-                    cart.push(product);
-        
-                    // Save the updated cart back to localStorage
-                    localStorage.setItem("cart", JSON.stringify(cart));
-        
-                    // Provide feedback to the user (you can customize this part)
-                    alert("Product added to cart!");
-                } else {
-                    alert("Sorry, your browser does not support storage. Unable to add to cart.");
-                }
+        document.getElementById("addToCart").onclick = function () {
+            // Retrieve product details
+            var productName = "Men's Fashion T Shirt";
+            var productPrice = 25;
+            var selectedSize = document.querySelector("select").value;
+            var quantity = parseInt(document.querySelector("input[type=number]").value);
+
+            // Create an object to represent the product
+            var product = {
+                name: productName,
+                price: productPrice,
+                size: selectedSize,
+                quantity: quantity
+            };
+
+            // Check if localStorage is supported
+            if (typeof (Storage) !== "undefined") {
+                // Retrieve the existing cart or create a new one
+                var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                // Add the product to the cart
+                cart.push(product);
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                // Provide feedback to the user (you can customize this part)
+                alert("Product added to cart!");
+            } else {
+                alert("Sorry, your browser does not support storage. Unable to add to cart.");
             }
-        
-        
+        }
+
+
     </script>
-   
+
+
+
+
+
     <script src="script.js"></script>
 
 
 </body>
+
 </html>

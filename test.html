@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+
+        #hero h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #hero h2, #hero h1 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        #hero p {
+            margin: 0;
+            color: #555;
+        }
+
+        #hero button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .slider-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            height: 300px; /* Set a fixed height for the slider container */
+            margin-top: 20px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 100%;
+            max-height: 100%; /* Set a maximum height for the images */
+            height: auto;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+
+<section id="hero">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons & up to 70% off! </p>
+    <button>Shop Now</button>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="image/slide/i_Fashion-Sale-Poster_full.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="image/slide/2.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="image/slide/3.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="image/slide/4.jpg" alt="Image 4"></div>
+            <!-- Add more slides as needed -->
+        </div>
+
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+</section>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        const translateValue = -currentSlide * 100 + '%';
+        slider.style.transform = 'translateX(' + translateValue + ')';
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Automatically change slide every 3 seconds
+    setInterval(function() {
+        nextSlide();
+    }, 3000);
+</script>
+
+</body>
+</html>

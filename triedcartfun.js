@@ -8,23 +8,27 @@ document.addEventListener("DOMContentLoaded", function () {
     var checkoutBtn = document.getElementById("checkout-btn");
     var paymentForm = document.getElementById("payment-form");
 
-    var cartItems = [
+    // Example cart items
+    var exampleCartItems = [
         {
-          name: "Product 1",
-          size: "Large",
-          quantity: 2,
-          price: 10.99,
-          image: "image/Products/f2.jpg",
+            name: "Product 1",
+            size: "Large",
+            quantity: 2,
+            price: 10.99,
+            image: "image/Products/f1.jpg"
         },
         {
-          name: "Product 2",
-          size: "Medium",
-          quantity: 1,
-          price: 19.99,
-          image: "image/Products/f2.jpg",
+            name: "Product 2",
+            size: "Medium",
+            quantity: 1,
+            price: 19.99,
+            image: "image/Products/f1.jpg",
         },
         // ... more items
-      ];
+    ];
+
+    // Use exampleCartItems for demonstration, replace it with the actual cartItems array from localStorage
+    cartItems = cartItems.length ? cartItems : exampleCartItems;
 
     function displayCartItems() {
         cartItemsBody.innerHTML = ""; // Clear existing content
@@ -34,12 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cartItems.forEach(function (item, index) {
             var cartItemRow = document.createElement("tr");
-           
+
             var imageItem = document.createElement("td");
             var image = document.createElement("img");
-              image.src = item.image; // Assuming you have an 'image' property in your item object
-              image.alt = item.name; // Add alt text for accessibility
-              imageItem.appendChild(image);
+            image.src = item.image; // Assuming you have an 'image' property in your item object
+            image.alt = item.name; // Add alt text for accessibility
+            imageItem.appendChild(image);
+
             var productName = document.createElement("td");
             productName.textContent = item.name;
 
@@ -62,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             removeIcon.addEventListener("click", removeCartItem);
             removeButton.appendChild(removeIcon);
 
+            cartItemRow.appendChild(imageItem);
             cartItemRow.appendChild(productName);
             cartItemRow.appendChild(productSize);
             cartItemRow.appendChild(productQuantity);
